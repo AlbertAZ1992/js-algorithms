@@ -1,0 +1,35 @@
+{
+  "name": "js-algorithms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-jest": "^23.4.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "jest": "^23.4.1",
+    "standard": "^11.0.1"
+  },
+  "scripts": {
+    "test": "standard && jest"
+  },
+  "jest": {
+    "verbose": false,
+    "bail": false,
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  }
+}
