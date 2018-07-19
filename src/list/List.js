@@ -2,7 +2,7 @@
 * @Author: Albert
 * @Date:   2018-07-18 22:19:35
 * @Last Modified by:   Albert
-* @Last Modified time: 2018-07-18 23:05:13
+* @Last Modified time: 2018-07-19 20:26:06
 */
 export default class List {
   constructor () {
@@ -82,12 +82,20 @@ export default class List {
     }
     return false
   }
+  /**
+   * clear list
+   */
   clear () {
     delete this.dataStore
     this.dataStore = []
     this.listSize = 0
     this.currentPos = 0
   }
+  /**
+   * check if list contains element
+   * @param  {*} element
+   * @return {Boolean}
+   */
   contains (element) {
     for (let i = 0; i < this.dataStore.length; i++) {
       if (this.dataStore[i] === element) {
@@ -96,30 +104,53 @@ export default class List {
     }
     return false
   }
+  /**
+   * move current position to the first
+   */
   front () {
     this.currentPos = 0
   }
+  /**
+   * move current position to the end
+   */
   end () {
     this.currentPos = this.listSize - 1
   }
+  /**
+   * move current position to previous one
+   */
   prev () {
     if (this.currentPos > 0) {
       --this.currentPos
     }
   }
+  /**
+   * move current position to next one
+   */
   next () {
     if (this.currentPos < this.listSize - 1) {
       ++this.currentPos
     }
   }
-  getCurrentPos () {
+  /**
+   * get current position
+   * @return {Number} current position
+   */
+  getCurrentPosition () {
     return this.currentPos
   }
+  /**
+   * move current position to index
+   */
   moveTo (pos) {
     if (pos > 0 && pos < this.listSize) {
       this.currentPos = pos
     }
   }
+  /**
+   * get element at current position
+   * @return {*} element
+   */
   getElement () {
     return this.dataStore[this.currentPos]
   }

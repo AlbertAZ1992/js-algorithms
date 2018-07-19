@@ -2,7 +2,7 @@
 * @Author: Albert
 * @Date:   2018-07-18 22:51:52
 * @Last Modified by:   Albert
-* @Last Modified time: 2018-07-19 20:15:59
+* @Last Modified time: 2018-07-19 20:26:14
 */
 import List from '../List.js'
 
@@ -96,9 +96,12 @@ describe('List', () => {
     expect(list.getElement()).toBe('a')
     list.next()
     expect(list.getElement()).toBe('b')
-    list.moveTo(4)
-    expect(list.getElement()).toBe('e')
-    list.prev()
+    list.moveTo(3)
     expect(list.getElement()).toBe('d')
+    list.prev()
+    expect(list.getElement()).toBe('c')
+    expect(list.getCurrentPosition()).toBe(2)
+    list.end()
+    expect(list.getElement()).toBe('e')
   })
 })
