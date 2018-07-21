@@ -22,6 +22,8 @@ export default class Stack {
     return this.top
   }
   clear () {
+    delete this.dataStore
+    this.dataStore = []
     this.top = 0
   }
 }
