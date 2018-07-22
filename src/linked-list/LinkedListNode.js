@@ -9,12 +9,12 @@ export class LinkedListNode {
 }
 
 export class DoublyLinkedListNode {
-  constructor(element) {
+  constructor (element) {
     this.element = element
     this.next = null
     this.previous = null
   }
-  toString(callback) {
+  toString (callback) {
     return callback ? callback(this.element) : `${this.element}`
   }
 }

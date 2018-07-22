@@ -13,7 +13,7 @@ export default class LinkedList {
   }
   insert (newElemnt, target) {
     let newNode = new Node(newElemnt)
-    let currentNode = this.find(item)
+    let currentNode = this.find(target)
     if (!Object.is(currentNode, null)) {
       newNode.next = currentNode.next
       currentNode.next = newNode
@@ -30,20 +30,17 @@ export default class LinkedList {
   remove (item) {
     let previousNode = this.findPrevious(item)
     if (!Object.is(previousNode.next, null)) {
-      let needDeleteNode = previousNode.next
       previousNode.next = previousNode.next.next
-      delete needDeleteNode
     }
     return this
   }
   toString () {
     let currentNode = this.head
     let result = []
-    while (!Object.is(currentNode.next, null)){
+    while (!Object.is(currentNode.next, null)) {
       result.push(currentNode.next.element)
       currentNode = currentNode.next
     }
     return `${result}`
   }
-
 }
