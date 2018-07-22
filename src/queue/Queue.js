@@ -4,6 +4,7 @@ export default class Queue {
   }
   enqueue (element) {
     this.dataStore.push(element)
+    return this
   }
   dequeue () {
     return this.isEmpty() ? null : this.dataStore.shift()

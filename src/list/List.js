@@ -90,6 +90,7 @@ export default class List {
     this.dataStore = []
     this.listSize = 0
     this.currentPos = 0
+    return this
   }
   /**
    * check if list contains element
@@ -109,12 +110,14 @@ export default class List {
    */
   front () {
     this.currentPos = 0
+    return this
   }
   /**
    * move current position to the end
    */
   end () {
     this.currentPos = this.listSize - 1
+    return this
   }
   /**
    * move current position to previous one
@@ -123,6 +126,7 @@ export default class List {
     if (this.currentPos > 0) {
       --this.currentPos
     }
+    return this
   }
   /**
    * move current position to next one
@@ -131,6 +135,7 @@ export default class List {
     if (this.currentPos < this.listSize - 1) {
       ++this.currentPos
     }
+    return this
   }
   /**
    * get current position
@@ -146,6 +151,7 @@ export default class List {
     if (pos > 0 && pos < this.listSize) {
       this.currentPos = pos
     }
+    return this
   }
   /**
    * get element at current position

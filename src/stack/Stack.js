@@ -5,6 +5,7 @@ export default class Stack {
   }
   push (element) {
     this.dataStore[this.top++] = element
+    return this
   }
   pop () {
     return this.top === 0 ? null : this.dataStore[--this.top]
@@ -25,5 +26,6 @@ export default class Stack {
     delete this.dataStore
     this.dataStore = []
     this.top = 0
+    return this
   }
 }
