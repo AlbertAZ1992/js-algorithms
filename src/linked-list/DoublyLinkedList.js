@@ -4,17 +4,24 @@ export default class DoublyLinkedList {
   constructor () {
     this.head = new Node('head')
   }
-  find (target) {
+  _find (target) {
     let currentNode = this.head
-    while (currentNode.element !== target && !Object.is(currentNode, null)) {
+    if (!target) {
+      return null
+    }
+    while (!Object.is(currentNode, null) && currentNode.element !== target) {
       currentNode = currentNode.next
     }
     return currentNode
   }
   insert (newElemnt, target) {
     let newNode = new Node(newElemnt)
-    let currentNode = this.find(target)
+    let currentNode = this._find(target)
     if (!Object.is(currentNode, null)) {
+      let afterNode = currentNode.next
+      if (afterNode) {
+        afterNode.previous = newNode
+      }
       newNode.next = currentNode.next
       newNode.previous = currentNode
       currentNode.next = newNode
@@ -22,8 +29,8 @@ export default class DoublyLinkedList {
     return this
   }
   remove (item) {
-    let currentNode = this.find(item)
-    if (!Object.is(currentNode.next, null)) {
+    let currentNode = this._find(item)
+    if (!Object.is(currentNode, null) && !Object.is(currentNode.next, null)) {
       currentNode.previous.next = currentNode.next
       currentNode.next.previous = currentNode.previous
       currentNode.next = null
@@ -42,12 +49,12 @@ export default class DoublyLinkedList {
   }
   toReverseString () {
     let tailNode = this.head
-    while (!Object(tailNode.next, null)) {
+    while (!Object.is(tailNode.next, null)) {
       tailNode = tailNode.next
     }
     let result = []
-    let currentNode = this.head
-    while (!Object(tailNode.previous, null)) {
+    let currentNode = tailNode
+    while (!Object.is(currentNode.previous, null)) {
       result.push(currentNode.element)
       currentNode = currentNode.previous
     }

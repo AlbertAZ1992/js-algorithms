@@ -5,8 +5,11 @@ export default class CircluarLinkedList {
     this.head = new Node('head')
     this.head.next = this.head
   }
-  find (target) {
+  _find (target) {
     let currentNode = this.head
+    if (!target) {
+      return null
+    }
     while (currentNode.element !== target && (currentNode.next.element !== 'head')) {
       currentNode = currentNode.next
     }
@@ -17,23 +20,26 @@ export default class CircluarLinkedList {
   }
   insert (newElemnt, target) {
     let newNode = new Node(newElemnt)
-    let currentNode = this.find(target)
+    let currentNode = this._find(target)
     if (!Object.is(currentNode, null)) {
       newNode.next = currentNode.next
       currentNode.next = newNode
     }
     return this
   }
-  findPrevious (item) {
+  _findPrevious (item) {
     let currentNode = this.head
     while (!Object.is(currentNode.next, null) && (currentNode.next.element !== item) && (currentNode.next.element !== 'head')) {
       currentNode = currentNode.next
     }
+    if (currentNode.next.element !== item) {
+      return null
+    }
     return currentNode
   }
   remove (item) {
-    let previousNode = this.findPrevious(item)
-    if (!Object.is(previousNode.next, null)) {
+    let previousNode = this._findPrevious(item)
+    if (!Object.is(previousNode, null) && !Object.is(previousNode.next, null)) {
       previousNode.next = previousNode.next.next
     }
     return this
