@@ -1,20 +1,26 @@
 export default class Dictionary {
   constructor () {
-    this.dataStore = []
+    this.dataStore = {}
   }
 
-  add (key, value) {
+  has (key) {
+    return key in this.dataStore
+  }
+
+  set (key, value) {
     this.dataStore[key] = value
     return this
   }
 
-  remove (key) {
-    delete this.dataStore[key]
-    return this
+  get (key) {
+    return this.has(key) ? this.dataStore[key] : null
   }
 
-  find (key) {
-    return this.dataStore[key]
+  remove (key) {
+    if (this.has(key)) {
+      delete this.dataStore[key]
+    }
+    return this
   }
 
   count () {
@@ -24,6 +30,12 @@ export default class Dictionary {
   clear () {
     Object.keys(this.dataStore).forEach(key => {
       delete this.dataStore[key]
+    })
+  }
+
+  values () {
+    return Object.keys(this.dataStore).map(key => {
+      return this.dataStore[key]
     })
   }
 
