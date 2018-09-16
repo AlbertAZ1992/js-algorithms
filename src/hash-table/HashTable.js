@@ -4,11 +4,11 @@
 let factories = {
   hash: function (value) {
     let total = 0
-    let len = this.dataTable.length
+    let len = value.length
     for (let i = 0; i < len; i++) {
       total += value.charCodeAt(i)
     }
-    return total % len
+    return total % this.dataTable.length
   }
 }
 
@@ -36,20 +36,20 @@ export default class HashTable {
   }
 
   useHash (value) {
-    this.call('hash', value)
-    return this
+    return this.call('hash', value)
   }
 
   size () {
     return this.dataTable.length
   }
   display () {
-    return this.dataTable
-      .filter(data => {
-        return data
-      })
-      .map(key => {
-        return `${key} -> ${this.dataTable[key]}`
-      })
+    let result = []
+    let len = this.dataTable.length
+    for (var i = 0; i < len; i++) {
+      if (this.dataTable[i] !== undefined) {
+        result.push(`${i} -> ${this.dataTable[i]}`)
+      }
+    }
+    return result
   }
 }
