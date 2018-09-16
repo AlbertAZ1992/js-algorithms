@@ -28,6 +28,7 @@ export default class HashTable {
   set (key, data) {
     let pos = this.useHash(key)
     this.dataTable[pos] = data
+    return this
   }
 
   get (key) {
@@ -36,11 +37,19 @@ export default class HashTable {
 
   useHash (value) {
     this.call('hash', value)
+    return this
   }
 
+  size () {
+    return this.dataTable.length
+  }
   display () {
-    return this.dataTable.map(key => {
-      return `${key} -> ${this.dataTable[key]}`
-    })
+    return this.dataTable
+      .filter(data => {
+        return data
+      })
+      .map(key => {
+        return `${key} -> ${this.dataTable[key]}`
+      })
   }
 }
